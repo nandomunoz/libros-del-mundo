@@ -1,6 +1,6 @@
 # 📚 **Libros del Mundo: Historias Contemporáneas**
 
-> 🌐 **Versión web:** https://nandomunoz.github.io/libros-del-mundo/ — gira el globo, toca un país y abre su libro. Se actualiza sola al editar la tabla de este readme.
+> 🌐 **Versión web:** https://nandomunoz.com/libros-del-mundo/ — gira el globo, toca un país y abre su libro. Se actualiza sola al editar la tabla de este readme.
 
 ### 🌍 **Descripción**
 Este repositorio es un viaje literario a través de los continentes, un compendio de obras seleccionadas con una regla simple pero significativa: **todos los libros aquí listados han sido publicados desde 2010 en adelante**. El objetivo es ofrecer una ventana al alma cultural de cada país, contada por autores que viven y sienten las realidades y matices de su propia tierra. 
