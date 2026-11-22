@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Libros del Mundo · Un libro por país desde 2010</title>
+  <meta name="description" content="Un libro contemporáneo por cada país, escrito desde 2010 por autores de su propia tierra. Gira el globo, toca un país y abre su libro.">
+  <meta property="og:title" content="Libros del Mundo">
+  <meta property="og:description" content="Un libro por país. Todos escritos desde 2010 por quien vive allí.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E📚%3C/text%3E%3C/svg%3E">
+  <!-- Tokens del sistema de diseño LUZ (luzds.com): colores, tipografía ET Book, espacios, movimiento -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@luz-ds/tokens@0.4.1/dist/luz-tokens.min.css">
+  <link rel="stylesheet" href="styles.css?v=3">
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-text">
+      <p class="kicker">Historias contemporáneas</p>
+      <h1>Libros <em>del</em> Mundo</h1>
+      <p class="lead">Un libro por país. Todos escritos desde 2010 por quien vive allí.</p>
+      <p class="stats" id="stats" aria-live="polite">Cargando…</p>
+      <div class="hero-actions">
+        <button class="btn primary" id="random" type="button">Ábreme un libro al azar</button>
+        <a class="btn" href="#estanteria">Ver la estantería</a>
+      </div>
+    </div>
+    <figure class="globe-wrap">
+      <svg id="globe" tabindex="0" role="img" aria-label="Globo terráqueo. Arrástralo o usa las flechas para girarlo; toca un país, o pulsa Intro, para abrir su libro. La estantería de abajo tiene los mismos libros en lista."></svg>
+      <div class="tip" id="tip" hidden></div>
+      <figcaption>Arrastra para girar · toca un país para abrir su libro</figcaption>
+    </figure>
+  </header>
+
+  <main id="estanteria">
+    <section class="controls" aria-label="Buscar y filtrar">
+      <input id="q" type="search" placeholder="Busca país, autor o título…" aria-label="Buscar" autocomplete="off">
+      <div class="chips" id="chips" role="group" aria-label="Continente"></div>
+      <label class="check"><input type="checkbox" id="onlyRead"> Solo los que ya leí</label>
+    </section>
+
+    <section aria-label="Pasaporte literario" class="passport">
+      <div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" id="bar"><span id="barFill"></span></div>
+      <p id="passportText">Pasaporte literario: 0 países leídos</p>
+    </section>
+
+    <section id="shelf" class="shelf" aria-label="Libros"></section>
+    <p id="empty" class="empty" hidden>No hay resultados. Prueba con otra búsqueda.</p>
+
+    <section id="participar" class="participate">
+      <h2>Cómo participar</h2>
+      <p>La lista es abierta. Para proponer un libro:</p>
+      <ol>
+        <li>Escrito por un autor del país que representa.</li>
+        <li>Publicado a partir de 2010.</li>
+        <li>Disponible en bibliotecas o plataformas globales.</li>
+      </ol>
+      <p><a class="btn primary" href="https://github.com/nandomunoz/libros-del-mundo" rel="noopener">Abrir un pull request en GitHub</a></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 <a href="https://nandomunoz.com">Nando Muñoz</a> · Mapa de <a href="https://www.naturalearthdata.com/">Natural Earth</a> · Diseño con <a href="https://luzds.com">LUZ</a> · Licencia MIT</p>
+  </footer>
+
+  <dialog id="card" data-theme="light" aria-labelledby="dTitle">
+    <button class="close" id="dClose" type="button" aria-label="Cerrar">✕</button>
+    <div class="openbook">
+      <div class="half"></div>
+      <div class="board">
+        <article class="page right">
+          <p class="p-country" id="dCountry"></p>
+          <h3 id="dTitle"></h3>
+          <p class="p-author" id="dAuthor"></p>
+          <p class="p-year" id="dYear"></p>
+          <div class="d-actions">
+            <a class="btn primary" id="dLink" target="_blank" rel="noopener">Encuéntralo en una biblioteca</a>
+            <button class="btn" id="dRead" type="button"></button>
+          </div>
+          <nav class="p-nav" aria-label="Pasar página">
+            <button id="dPrev" type="button">‹ Anterior</button>
+            <span id="dNum"></span>
+            <button id="dNext" type="button">Siguiente ›</button>
+          </nav>
+        </article>
+      </div>
+      <div class="leaf" aria-hidden="true">
+        <div class="leaf-front" id="leafFront"></div>
+        <div class="leaf-back">
+          <div class="page left">
+            <p class="exlibris">Ex libris</p>
+            <div class="stamp" id="stamp">
+              <span>Libros del Mundo</span>
+              <strong id="sCountry"></strong>
+              <span id="sStatus"></span>
+            </div>
+            <p class="p-continent" id="sContinent"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="https://cdn.jsdelivr.net/npm/d3-array@3.2.4/dist/d3-array.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/d3-geo@3.1.1/dist/d3-geo.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
+  <script src="globe.js?v=3"></script>
+  <script src="app.js?v=3"></script>
+</body>
+</html>

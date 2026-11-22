@@ -1,5 +1,7 @@
 # 📚 **Libros del Mundo: Historias Contemporáneas**
 
+> 🌐 **Versión web:** https://nandomunoz.github.io/libros-del-mundo/ — gira el globo, toca un país y abre su libro. Se actualiza sola al editar la tabla de este readme.
+
 ### 🌍 **Descripción**
 Este repositorio es un viaje literario a través de los continentes, un compendio de obras seleccionadas con una regla simple pero significativa: **todos los libros aquí listados han sido publicados desde 2010 en adelante**. El objetivo es ofrecer una ventana al alma cultural de cada país, contada por autores que viven y sienten las realidades y matices de su propia tierra. 
 
@@ -206,8 +208,9 @@ Cada libro incluido es más que una obra: es una perspectiva, un retrato, una hi
 1. [Acerca del Proyecto](#acerca-del-proyecto)
 2. [Cómo Participar](#cómo-participar)
 3. [Exploración de Libros](#exploración-de-libros)
-4. [Inspiración y Filosofía](#inspiración-y-filosofía)
-5. [Licencia](#licencia)
+4. [La Web](#la-web)
+5. [Inspiración y Filosofía](#inspiración-y-filosofía)
+6. [Licencia](#licencia)
 
 
 
@@ -251,6 +254,33 @@ Navegar por la tabla principal te permitirá explorar culturas y descubrir histo
 > Los enlaces han de tener estas reglas
 > `https://www.worldcat.org/search?q=ti:TITULO+DEL+LIBRO+au:AUTOR+DEL+LIBRO`
 
+
+
+
+## 🌐 **La Web**
+
+La landing (GitHub Pages, sin compilación) lee la tabla de este readme y la muestra como un globo terráqueo interactivo y una estantería de libros en 3D. Al tocar un país en el globo se abre su libro.
+
+- **Globo:** arrastra para girarlo; las flechas y la tecla Intro también funcionan.
+- **Estantería:** busca por país, autor o título y filtra por continente.
+- **Pasaporte literario:** marca los libros que has leído; se guardan en tu navegador.
+- **Enlaces directos:** `#pais=ES` abre el libro de España (código ISO de dos letras).
+
+**Archivos**
+
+| Archivo | Qué es |
+|---|---|
+| `index.html`, `styles.css`, `app.js` | La página. Estilos con los tokens del sistema de diseño [LUZ](https://luzds.com). |
+| `globe.js` | El globo (d3-geo y topojson-client desde CDN). |
+| `mundo.json` | El mapa: [Natural Earth](https://www.naturalearthdata.com/) 1:110m, dominio público. Los países pequeños son puntos. |
+| `paises.json` | País → `["Continente", "Código ISO"]`. |
+| `.nojekyll` | Evita que GitHub Pages convierta este readme en HTML. |
+
+**Añadir un libro:** añade la fila a la tabla con el formato `Título (año)`. Si el país es nuevo, añádelo también a `paises.json` con su continente y su código ISO de dos letras.
+
+**Probar en local:** `python3 -m http.server` en la raíz y abre http://localhost:8000.
+
+**Publicar:** en GitHub, Settings → Pages → Deploy from a branch → `main` / `(root)`. Si cambias `styles.css`, `app.js` o `globe.js`, sube el `?v=` de su enlace en `index.html` para evitar la caché.
 
 
 
